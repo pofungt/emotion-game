@@ -17,10 +17,10 @@ faceDetect = cv2.CascadeClassifier('./utils/haarcascade_frontalface_default.xml'
 labels_dict = {0: 'Angry', 1: 'Disgust', 2: 'Fear',
                3: 'Happy', 4: 'Neutral', 5: 'Sad', 6: 'Surprise'}
 
-@app.post('/predict')
-async def predict(request):
+@app.post('/analysis')
+async def analysis(request):
     try:
-        image = request.files.get("predict")
+        image = request.files.get("analysis")
         image = PIL.Image.open(io.BytesIO(image.body))
         gray = cv2.cvtColor(np.array(image), cv2.COLOR_BGR2GRAY)
         faces = faceDetect.detectMultiScale(gray, 1.3, 3)
