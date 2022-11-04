@@ -12,7 +12,7 @@ app.use(express.static('./public'));
 
 app.use((req, res) => {
     res.status(404);
-    res.sendFile(path.resolve('./public404.html'));
+    res.sendFile(path.resolve('./public/404.html'));
 });
 
 const PORT = 8080;
