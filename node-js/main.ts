@@ -2,12 +2,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from 'express';
-import http from "http";
 import path from "path";
 
 
 const app = express();
-const server = new http.Server(app)
+app.use(express.json());
 
 app.use(express.static('./public'));
 
@@ -17,7 +16,6 @@ app.use((req, res) => {
 });
 
 const PORT = 8080;
-
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Listening at http://localhost:${PORT}`)
 })
