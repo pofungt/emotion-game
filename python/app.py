@@ -46,8 +46,8 @@ async def analysis(request):
             "uploaded": True,
             "result": result_array
         })
-    except:
-        print("[Error] Unable to predict.")
+    except Exception as e:
+        print("Error: " + e)
         return json({
             "uploaded": False
         })

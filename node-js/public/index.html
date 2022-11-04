@@ -10,13 +10,22 @@
     </head>
     
     <body>
-        <div class="container">
-            <h1>EMO<br>GAME</h1>
+        <div class="main">
+            <div class="page_title">
+                <div class="title_word_container">
+                    <div class="title_word">EMO</div>
+                    <div class="title_word">GAME</div>
+                </div>
+            </div>
             <div id="cam">
                 <video id="videoInput" width="320" height="240"></video>
+                <canvas id="canvasOutput" width="320" height="240"></canvas>
             </div>
         </div>
-        <canvas id="canvasOutput" width="320" height="240"></canvas>
+
+        <div class="footer">
+
+        </div>
         
         <script async src="opencv.js" onload="openCvReady();"></script>
         <script src="index.js"></script>

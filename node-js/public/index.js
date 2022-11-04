@@ -1,7 +1,14 @@
 function openCvReady() {
     cv['onRuntimeInitialized'] = ()=>{
+        const constraints = {
+            audio: false,
+            video: {
+                width: 320,
+                height: 240
+            }
+        }
         let video = document.getElementById('videoInput');
-        navigator.mediaDevices.getUserMedia({video:true, audio:false})
+        navigator.mediaDevices.getUserMedia(constraints)
         .then(function(stream) {
             video.srcObject = stream;
             video.play();
