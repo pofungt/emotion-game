@@ -23,10 +23,10 @@ labels_dict = {0: 'Angry', 1: 'Disgust', 2: 'Fear',
                3: 'Happy', 4: 'Neutral', 5: 'Sad', 6: 'Surprise'}
 
 
-@app.post('/analysis')
-async def analysis(request):
+@app.post('/test')
+async def test(request):
     try:
-        image = request.files.get("analysis")
+        image = request.files.get("test")
         image = PIL.Image.open(io.BytesIO(image.body))
         gray = cv2.cvtColor(np.array(image), cv2.COLOR_BGR2GRAY)
         faces = faceDetect.detectMultiScale(gray, 1.3, 3)
