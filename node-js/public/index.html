@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css" />
-    <title>Emo Game</title>
-</head>
-
-<body>
-    <div class="container">
-        <h1>EMO<br>GAME</h1>
-        <div id="cam">HI</div>
-    </div>
-    <script src="./index.js"></script>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./index.css" />
+        <title>Emo Game</title>
+    </head>
+    
+    <body>
+        <div class="container">
+            <h1>EMO<br>GAME</h1>
+            <div id="cam">HI</div>
+        </div>
+        <video id="videoInput" width="320" height="240"></video>
+        <canvas id="canvasOutput" width="320" height="240"></canvas>
+        
+        <script async src="opencv.js" onload="openCvReady();"></script>
+        <script src="index.js"></script>
 </body>
 
 </html>
