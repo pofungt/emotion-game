@@ -16,12 +16,9 @@ app.config.CORS_ORIGINS = "http://localhost:8080,http://localhost:8000"
 Extend(app)
 
 model = load_model('./utils/model_file.h5')
-faceDetect = cv2.CascadeClassifier(
-    './utils/haarcascade_frontalface_default.xml')
+faceDetect = cv2.CascadeClassifier('./utils/haarcascade_frontalface_default.xml')
 
-labels_dict = {0: 'Angry', 1: 'Disgust', 2: 'Fear',
-               3: 'Happy', 4: 'Neutral', 5: 'Sad', 6: 'Surprise'}
-
+labels_dict = {0: 'Angry', 1: 'Disgust', 2: 'Fear', 3: 'Happy', 4: 'Neutral', 5: 'Sad', 6: 'Surprise'}
 
 @app.post('/test')
 async def test(request):
@@ -96,4 +93,4 @@ async def stream(request):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=8000, single_process=True)

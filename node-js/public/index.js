@@ -28,17 +28,40 @@ function openCvReady() {
             cap.read(src);
             src.copyTo(dst);
             cv.cvtColor(dst, gray, cv.COLOR_RGBA2GRAY, 0);
-            frame64 = getFrame()
+            frame64 = getFrame();
             const res = await fetch('http://localhost:8000/stream',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({img: frame64})
-            })
+            });
             prediction = await res.json();
-            console.log(prediction)
 
+            let x = 0;
+            let y = 0;
+            let w = 0;
+            let h = 0;
+            let predictResult = "";
+            let probability = 0;
+
+            if (prediction) {
+                if (prediction.uploaded) {
+                    if (prediction.result.length) {
+                        x = prediction.result[0].x;
+                        y = prediction.result[0].y;
+                        w = prediction.result[0].w;
+                        h = prediction.result[0].h;
+                        predictResult = prediction.result[0].predict;
+                        probability = prediction.result[0].probability;
+                    }
+                }
+            }
+            cv.rectangle(dst, new cv.Point(x, y), new cv.Point(x+w, y+h), new cv.Scalar(0, 0, 255, 255), 1, cv.LINE_AA, 0)
+            cv.rectangle(dst, new cv.Point(x, y), new cv.Point(x+w, y+h), new cv.Scalar(50, 50, 255, 255), 2, cv.LINE_AA, 0)
+            cv.rectangle(dst, new cv.Point(x, y-40), new cv.Point(x+w, y), new cv.Scalar(50, 50, 255, 255), -1, cv.LINE_AA, 0)
+            cv.putText(dst, predictResult, new cv.Point(x, y-10),
+                        cv.FONT_HERSHEY_SIMPLEX, 0.8, new cv.Scalar(255, 255, 255, 255), 2, cv.LINE_AA, 0)
             cv.imshow("canvasOutput", dst);
             // schedule next one.
             let delay = 1000/FPS - (Date.now() - begin);
