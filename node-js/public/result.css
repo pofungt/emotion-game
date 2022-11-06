@@ -40,3 +40,18 @@ h2 {
     display: flex;
     justify-content: flex-start;
 }
+
+.cross{
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+table {
+    border: none;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+  }
