@@ -15,13 +15,13 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname,'public')));
 
 // knex print out leaderboard
-// async function leaderboard(){
-//     const board = await knex.select('username','score')
-//                     .from('leaderboard')
-//                     .orderBy("score",'desc')
-//     console.log(board[0])
-// }
-// leaderboard()
+async function leaderboard(){
+    const board = await knex.select('username','score')
+                    .from('leaderboard')
+                    .orderBy("score",'desc')
+    console.log(board[0])
+}
+leaderboard()
 
 app.use((req, res) => {
     res.status(404);
