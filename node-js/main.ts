@@ -7,7 +7,8 @@ import Knex from "knex";
 
 const knexConfig = require("./knexfile");
 const configMode = process.env.NODE_ENV || "development";
-const knex = Knex(knexConfig[configMode]);
+// export to pass typescript constraint of unused variable, can remove the export afterwards
+export const knex = Knex(knexConfig[configMode]);
 
 const app = express();
 app.use(express.json());
