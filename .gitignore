@@ -6,3 +6,4 @@ package-lock.json
 # Python
 myenv
 data
+__pycache__
