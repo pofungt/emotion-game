@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>End Page</title>
+	<link type="text/css" href="css/style.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div class="top-container">
+		<h1>Nicely Played!</h1>
+		
+		<img class="imagezfaces" src="images/face.png">
+        <div class="profile">
+            
+            <p class="intro">You Scored:</p>
+            <p class="intro">Correct:</p>
+            
+            <div class="contact-me">
+                <a class="btnv" href="play.html">Play Again </a>
+              </div>
+        </div>
+	</div>
+	<div class="popup" id="popup-1">
+		<div class="overlay"></div>
+		<div class="content">
+			<div class="close-btn" onclick="togglePopup()">&times;</div>
+			<h2>Leaderboard</h2>
+			<ol type="1">
+				<li>Duncan 10950</li>
+				<li>Samuel 9867</li>
+				<li>KY 8576</li>
+				<li>Your Name 8576</li>
+			</ol>
+		
+		</div>
+	</div>
+	<div class="middle-container">
+
+		<div class="contact-me">
+		  <button class="btn" onclick="togglePopup()"><a href="">Leaderboard</a></button>
+		</div>
+	  </div> 
+	  <script>
+		function togglePopup(){
+			document.getElementById("popup-1").classList.toggle("active");
+		}
+	  </script>
+</body>
+</html>
