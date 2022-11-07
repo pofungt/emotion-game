@@ -165,6 +165,7 @@ canvas {
 
 #introModal .modal-content{
     background-color: #60CDB5;
+    border: solid 6px #FEE2A0;
 }
 
 #introModal .btn-close {

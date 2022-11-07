@@ -57,12 +57,13 @@ function openCvReady() {
                     }
                 }
             }
-            
-            if (predictResult === "Happy") {
-                document.querySelector("#game_started_container").style.display = "block";
-                setInterval(()=>{
-                    window.location.href = "./gamePage/game.html";
-                }, 2000);
+            if (!document.querySelector("#introModal").classList.contains("show")) {
+                if (predictResult === "Happy") {
+                    document.querySelector("#game_started_container").style.display = "block";
+                    setInterval(()=>{
+                        window.location.href = "./gamePage/game.html";
+                    }, 2000);
+                }
             }
 
             cv.rectangle(dst, new cv.Point(x, y), new cv.Point(x+w, y+h), new cv.Scalar(0, 0, 255, 255), 1, cv.LINE_AA, 0)
