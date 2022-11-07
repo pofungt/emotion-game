@@ -3,7 +3,7 @@ function openCvReady() {
         const constraints = {
             audio: false,
             video: {
-                width: 320,
+                width: 480,
                 height: 240
             }
         }
@@ -59,7 +59,7 @@ function openCvReady() {
             }
             
             if (predictResult === "Happy") {
-                document.querySelector("#game_started").style.display = "flex";
+                document.querySelector("#game_started_container").style.display = "block";
                 setInterval(()=>{
                     window.location.href = "./gamePage/game.html";
                 }, 2000);

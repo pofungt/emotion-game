@@ -1,12 +1,4 @@
-@font-face {
-    font-family: "junegull";
-    src: url("./fonts/junegull.ttf");
-}
-
-@font-face {
-    font-family: "ConcertOne";
-    src: url("./fonts/ConcertOne-Regular.ttf");
-}
+@import "./fonts.css";
 
 body {
     height: 100vh;
@@ -54,17 +46,17 @@ body {
 
 #cam {
     position: relative;
-    width: 480px;
-    height: 240px;
+    width: 496px;
+    height: 256px;
 }
 
 video {
-    position: absolute;
     border-radius: 20px;
-    border: solid 8px #FEE2A0;
-    background-color: black;
+    position: absolute;
     top: 0;
     left: 0;
+    border-radius: 20px;
+    background-color: black;
     z-index: -1;
 }
 
@@ -128,24 +120,30 @@ canvas {
     width: 250px;
 }
 
-#game_started {
-    position: absolute;
-    width: 320px;
-    height: 240px;
+#game_started_container {
     border: solid 8px #FEE2A0;
-    background-color: rgb(255, 255, 255, 0.5);
+    position: absolute;
     border-radius: 20px;
     top: 0;
     left: 0;
+    width: 496px;
+    height: 256px;
     z-index: 2;
     display: none;
+    background-color: rgb(255, 255, 255, 0.5);
+    animation-duration: 0.5s;
+    animation-name: animate-pop;
+    animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
+}
+
+#game_started {
+    width: 480px;
+    height: 240px;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 90px;
     color: rgb(0, 86, 0);
-    animation-duration: 0.5s;
-    animation-name: animate-pop;
-    animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
 }
 
 @keyframes animate-pop {
