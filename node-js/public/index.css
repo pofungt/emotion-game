@@ -3,6 +3,11 @@
     src: url("./fonts/junegull.ttf");
 }
 
+@font-face {
+    font-family: "ConcertOne";
+    src: url("./fonts/ConcertOne-Regular.ttf");
+}
+
 body {
     height: 100vh;
     background-color: #60CDB5;
@@ -15,26 +20,41 @@ body {
     margin: 0;
 }
 
-.main {
+#main {
     background-color: #60CDB5;
     height: 80%;
     width: 100%;
     padding-top: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
 }
 
-.footer {
+#footer {
     background-color: #FEE2A0;
     height: 20%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#how_to_play_button {
+    cursor: pointer;
+}
+
+#how_to_play_button:hover {
+    opacity: 0.8;;
+}
+
+#how_to_play_button img {
+    width: 150px;
 }
 
 #cam {
     position: relative;
-    width: 320px;
+    width: 480px;
     height: 240px;
 }
 
@@ -58,8 +78,9 @@ canvas {
     z-index: 1
 }
 
-.page_title {
-    width: 320px;
+#page_title {
+    width: 100%;
+    height: calc(80% - 320px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,18 +88,44 @@ canvas {
     padding-bottom: 10px;
 }
 
-.title_word_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-
 .title_word {
     font-family: "junegull";
     font-size: 50px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+}
+
+#page_bottom {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+#smile_text {
+    width: 100%;
+    height: 50%;
+    font-family: "ConcertOne";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+#smile_line {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#smile_line img {
+    width: 250px;
 }
 
 #game_started {
