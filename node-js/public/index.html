@@ -1,45 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="./index.css" />
-        <title>Emo Game</title>
-    </head>
-    
-    <body>
-        <div id="main">
-            <div id="page_title">
-                <div class="title_word">EMO GAME</div>
-            </div>
-            <div id="cam">
-                <video id="videoInput" width="480" height="240"></video>
-                <canvas id="canvasOutput" width="480" height="240"></canvas>
-                <div id="game_started">
-                    <i class="fa-sharp fa-solid fa-circle-check"></i>
-                </div>
-            </div>
-            <div id="page_bottom">
-                <div id="smile_text">
-                    smile to start
-                </div>
-                <div id="smile_line">
-                    <img src="./assets/smile_line.svg">
-                </div>
-            </div>
-        </div>
 
-        <div id="footer">
-            <div id="how_to_play_button">
-                <img src="./assets/how_to_play_button.svg">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./index.css" />
+    <title>Emo Game</title>
+</head>
+
+<body>
+    <div id="main">
+        <div id="page_title">
+            <div class="title_word">EMO GAME</div>
+        </div>
+        <div id="cam">
+            <video id="videoInput" width="480" height="240"></video>
+            <canvas id="canvasOutput" width="480" height="240"></canvas>
+            <div id="game_started">
+                <i class="fa-sharp fa-solid fa-circle-check"></i>
             </div>
         </div>
-        
-        <script async src="opencv.js" onload="openCvReady();"></script>
-        <script src="index.js"></script>
+        <div id="page_bottom">
+            <div id="smile_text">
+                smile to start
+            </div>
+            <div id="smile_line">
+                <img src="./assets/smile_line.svg">
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div id="how_to_play_button" data-bs-toggle="modal" data-bs-target="#introModal">
+            <img src="./assets/how_to_play_button.svg">
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="introModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title fs-5 col-11 text-center" id="introModalLabel">
+                        How To Play
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Introduction Here...(to be completed...)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script async src="opencv.js" onload="openCvReady();"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

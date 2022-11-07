@@ -159,3 +159,16 @@ canvas {
         transform: scale(1, 1);
     }
 }
+
+/* Modal */
+#introModal {
+    font-family: "ConcertOne";
+}
+
+#introModal .modal-content{
+    background-color: #60CDB5;
+}
+
+#introModal .btn-close {
+    background: transparent url("./assets/cross_mark.svg") center/1em auto no-repeat;
+}
