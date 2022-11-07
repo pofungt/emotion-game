@@ -57,6 +57,14 @@ function openCvReady() {
                     }
                 }
             }
+            
+            if (predictResult === "Happy") {
+                document.querySelector("#game_started").style.display = "flex";
+                setInterval(()=>{
+                    window.location.href = "./gamePage/game.html";
+                }, 2000);
+            }
+
             cv.rectangle(dst, new cv.Point(x, y), new cv.Point(x+w, y+h), new cv.Scalar(0, 0, 255, 255), 1, cv.LINE_AA, 0)
             cv.rectangle(dst, new cv.Point(x, y), new cv.Point(x+w, y+h), new cv.Scalar(50, 50, 255, 255), 2, cv.LINE_AA, 0)
             cv.rectangle(dst, new cv.Point(x, y-40), new cv.Point(x+w, y), new cv.Scalar(50, 50, 255, 255), -1, cv.LINE_AA, 0)
