@@ -24,12 +24,12 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="d-flex col-xl-4 justify-content-center">
+                <div class="d-flex col-xl-4 justify-content-center align-items-start">
                     <div id="question_frame">
 
                     </div>
                 </div>
-                <div class="d-flex col-xl-4 justify-content-center">
+                <div class="d-flex col-xl-4 justify-content-center align-items-start">
                     <div id="game_part">
                         <video id="videoInput" width="320" height="240"></video>
                         <canvas id="canvasOutput" width="320" height="240"></canvas>
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex col-xl-4 justify-content-center">
+                <div class="d-flex col-xl-4 justify-content-center align-items-start">
                     <div id="result_frame">
     
                     </div>
@@ -56,8 +56,10 @@
 
     </div>
 
+    <div id="count_down_to_start">3</div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script async src="../opencv.js" onload="openCvReady();"></script>
+    <script async src="../opencv.js" onload="openCvReady();gameStart();"></script>
     <script src="./game.js"></script>
 </body>
 
