@@ -30,9 +30,11 @@ async function gameStart() {
     await sleep(() => { countDownToStart.innerHTML = "2"; }, 1000);
     await sleep(() => { countDownToStart.innerHTML = "1"; }, 1000);
     await sleep(() => { countDownToStart.style.display = "none"; }, 1000);
+
     // Start timer
     const timer = new Timer(LEVELS_TIME[game.level]);
     timer.start();
+    
     // Randomly pick emotion for question
     const randomIndex = Math.floor(Math.random() * 6);
     const emotionQuestion = EMOTIONS_LABEL[randomIndex];
@@ -42,6 +44,8 @@ async function gameStart() {
         <div id="emo_description">${emotionQuestion}</div>
     `;
 
+    // Add the question asked by 1
+    game.questionsAsked++;
     // Check if player makes the right emotion
     let continuePlay = true;
     let answeredCorrectly = false;
@@ -62,8 +66,12 @@ async function gameStart() {
             }
         }, 1);
     }
+    // Stop timer
+    timer.stop();
     console.log("yay")
-    // Things to do here
+    if (!answeredCorrectly) {
+        window.location.href = `../resultPage/result.html?point=${game.point}&asked=${game.questionsAsked}&correct=${game.correctAnswers}`
+    }
     // Loop through questions and levels
 }
 

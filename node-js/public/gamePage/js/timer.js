@@ -5,11 +5,11 @@ export class Timer {
     }
 
     start() {
-        this.timer = window.setInterval(()=>this.updateTimer(), 10);
-        this.updateTimer();
+        this.timer = window.setInterval(()=>this.tick(), 10);
+        this.tick();
     }
 
-    updateTimer() {
+    tick() {
         this.timeLeft = this.timeLeft - 1;
         if (this.timeLeft >= 0) {
             const left = ("0"+`${Math.floor(this.timeLeft / 100)}`).slice(-2);
@@ -18,11 +18,11 @@ export class Timer {
             document.querySelector("#colon").innerHTML = ":";
             document.querySelector("#right").innerHTML = right;
         } else {
-            this.gameOver();
+            this.stop();
         }
     }
 
-    gameOver() {
+    stop() {
         window.clearInterval(this.timer);
     }
 
