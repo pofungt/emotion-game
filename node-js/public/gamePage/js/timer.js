@@ -17,7 +17,6 @@ export class Timer {
             document.querySelector("#left").innerHTML = left;
             document.querySelector("#colon").innerHTML = ":";
             document.querySelector("#right").innerHTML = right;
-            console.log(this.timeLeft);
         } else {
             this.gameOver();
         }
@@ -25,5 +24,10 @@ export class Timer {
 
     gameOver() {
         window.clearInterval(this.timer);
+    }
+
+    getTimeUsed() {
+        // Return in seconds
+        return (this.countFrom - this.timeLeft) / 100;
     }
 }

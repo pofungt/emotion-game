@@ -43,12 +43,29 @@ body {
 }
 
 #question_frame {
+    position: relative;
     width: 336px;
     height: 256px;
     border: solid 8px #FEE2A0;
     border-radius: 20px;
     background-color: black;
     margin-top: 10px;
+}
+
+#question_frame img {
+    width: 320px;
+    height: 240px;
+    border-radius: 10px;
+}
+
+#emo_description {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    font-size: 40px;
+    font-family: "junegull";
+    text-shadow: 3px 3px black;
 }
 
 #game_part {

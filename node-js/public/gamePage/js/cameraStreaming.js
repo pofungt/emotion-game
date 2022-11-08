@@ -54,6 +54,15 @@ function camera() {
                         h = prediction.result[0].h;
                         predictResult = prediction.result[0].predict;
                         probability = prediction.result[0].probability;
+
+                        if (predictResult === window.emotion) {
+                            // Mark the number of frames that player maintains the same emotion
+                            window.emotionTime ++;
+                        } else {
+                            window.emotion = predictResult;
+                            // Player changes emotion, so reset the frame counter
+                            window.emotionTime = 0;
+                        }
                     }
                 }
             }
