@@ -4,6 +4,7 @@ dotenv.config();
 import express from 'express';
 import path from "path";
 import Knex from "knex";
+import { leaderBoardRoute } from "./Routes/leaderboardRoute";
 
 const knexConfig = require("./knexfile");
 const configMode = process.env.NODE_ENV || "development";
@@ -13,16 +14,9 @@ export const knex = Knex(knexConfig[configMode]);
 const app = express();
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname,'public')));
+app.use(leaderBoardRoute);
 
-// knex print out leaderboard
-async function leaderboard(){
-    const board = await knex.select('username','score')
-                    .from('leaderboard')
-                    .orderBy("score",'desc')
-    console.log(board[0])
-}
-leaderboard()
+app.use(express.static(path.join(__dirname,'public')));
 
 app.use((req, res) => {
     res.status(404);
