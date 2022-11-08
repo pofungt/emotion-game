@@ -118,7 +118,7 @@ canvas {
     height: 25%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
 #footer {
@@ -142,4 +142,20 @@ canvas {
     justify-content: center;
     align-items: center;
     color: #60CDB5;
+}
+
+#timer {
+    font-size: 50px;
+    color:#FEE2A0;
+    font-family: "junegull";
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#left, #colon, #right {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
