@@ -1,4 +1,5 @@
-@import "../utils.css";
+@import "../fonts.css";
+@import "../animation.css";
 
 body {
     height: 100vh;
