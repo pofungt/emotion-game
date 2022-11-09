@@ -12,7 +12,7 @@ from sanic_ext import Extend
 IMG_SIZE = 48
 
 app = Sanic("Emotion_Detection")
-app.config.CORS_ORIGINS = "http://localhost:8080,http://localhost:8000,http://emogame.duncantang.dev:8080"
+app.config.CORS_ORIGINS = "http://localhost:8080,http://localhost:8000"
 Extend(app)
 
 model = load_model('./utils/model_file.h5')
