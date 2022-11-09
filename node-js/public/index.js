@@ -1,4 +1,4 @@
-function openCvReady() {
+function camera() {
     cv['onRuntimeInitialized'] = ()=>{
         const constraints = {
             audio: false,

@@ -1,18 +1,4 @@
-function gameStart() {
-    const countDownToStart = document.querySelector("#count_down_to_start");
-    countDownToStart.style.display = "flex";
-    setInterval(()=>{
-        countDownToStart.innerHTML = "2";
-        setInterval(()=>{
-            countDownToStart.innerHTML = "1";
-            setInterval(()=>{
-                countDownToStart.style.display = "none";
-            },1000);
-        }, 1000);
-    }, 1000);
-}
-
-function openCvReady() {
+function camera() {
     cv['onRuntimeInitialized'] = ()=>{
         const constraints = {
             audio: false,
@@ -68,6 +54,15 @@ function openCvReady() {
                         h = prediction.result[0].h;
                         predictResult = prediction.result[0].predict;
                         probability = prediction.result[0].probability;
+
+                        if (predictResult === window.emotion) {
+                            // Mark the number of frames that player maintains the same emotion
+                            window.emotionTime ++;
+                        } else {
+                            window.emotion = predictResult;
+                            // Player changes emotion, so reset the frame counter
+                            window.emotionTime = 0;
+                        }
                     }
                 }
             }

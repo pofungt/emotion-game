@@ -18,8 +18,7 @@
         <div id="page_title">
             <div id="title_word">EMO GAME</div>
             <div id="level_words">
-                <span id="level_1">1</span>/<span id="level_2">2</span>/<span id="level_3">3</span>/<span
-                    id="level_4">4</span>/<span id="level_5">5</span>
+                <span id="level_1">1</span>/<span id="level_2">2</span>/<span id="level_3">3</span>
             </div>
         </div>
         <div class="container">
@@ -48,19 +47,23 @@
             </div>
         </div>
         <div id="page_bottom">
-
+            <div id="timer">
+                <div id="left"></div>
+                <div id="colon"></div>
+                <div id="right"></div>
+            </div>
         </div>
     </div>
 
     <div id="footer">
-
     </div>
 
     <div id="count_down_to_start">3</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script async src="../opencv.js" onload="openCvReady();gameStart();"></script>
-    <script src="./game.js"></script>
+    <script async src="../opencv.js" onload="camera()"></script>
+    <script src="./js/cameraStreaming.js"></script>
+    <script type="module" src="./js/game.js"></script>
 </body>
 
 </html>

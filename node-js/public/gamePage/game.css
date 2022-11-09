@@ -1,4 +1,5 @@
-@import "../utils.css";
+@import "../fonts.css";
+@import "../animation.css";
 
 body {
     height: 100vh;
@@ -42,12 +43,29 @@ body {
 }
 
 #question_frame {
+    position: relative;
     width: 336px;
     height: 256px;
     border: solid 8px #FEE2A0;
     border-radius: 20px;
     background-color: black;
     margin-top: 10px;
+}
+
+#question_frame img {
+    width: 320px;
+    height: 240px;
+    border-radius: 10px;
+}
+
+#emo_description {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    font-size: 40px;
+    font-family: "junegull";
+    text-shadow: 3px 3px black;
 }
 
 #game_part {
@@ -117,7 +135,7 @@ canvas {
     height: 25%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
 #footer {
@@ -141,4 +159,20 @@ canvas {
     justify-content: center;
     align-items: center;
     color: #60CDB5;
+}
+
+#timer {
+    font-size: 50px;
+    color:#FEE2A0;
+    font-family: "junegull";
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#left, #colon, #right {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
