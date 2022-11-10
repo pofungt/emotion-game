@@ -1,11 +1,8 @@
 import express from 'express';
-import { knex } from '../main';
+import { leaderBoardController } from "../main";
 
-export const leaderBoardRoute = express.Router();
-
-leaderBoardRoute.get("/board", async (req,res) => {
-    const board = await knex.select('username','score')
-                    .from('leaderboard')
-                    .orderBy("score",'desc')
-  res.json(board);
-})
+export const leaderBoardRoutes = () => {
+	const leaderBoardRoutes = express.Router();
+	leaderBoardRoutes.get('/board', leaderBoardController.getBoard);
+	return leaderBoardRoutes;
+};

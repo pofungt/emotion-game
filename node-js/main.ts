@@ -4,17 +4,21 @@ dotenv.config();
 import express from 'express';
 import path from "path";
 import Knex from "knex";
-import { leaderBoardRoute } from "./Routes/leaderboardRoute";
+import { leaderBoardRoutes } from "./Routes/leaderboardRoute";
+import {LeaderBoardController} from "./controllers/LeaderBoardController";
+import {LeaderBoardService} from "./services/LeaderBoardService";
 
 const knexConfig = require("./knexfile");
 const configMode = process.env.NODE_ENV || "development";
-// export to pass typescript constraint of unused variable, can remove the export afterwards
 export const knex = Knex(knexConfig[configMode]);
 
 const app = express();
 app.use(express.json());
 
-app.use(leaderBoardRoute);
+export const leaderBoardService = new LeaderBoardService(knex);
+export const leaderBoardController = new LeaderBoardController(leaderBoardService);
+
+app.use(leaderBoardRoutes());
 
 app.use(express.static(path.join(__dirname,'public')));
 
