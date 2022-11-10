@@ -179,3 +179,18 @@ td:nth-child(2) {
 #failToast .toast-body {
     color:#C13E7D;
 }
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .result_title, .result_data {
+        width: 40vw;
+    }
+
+    #content>img {
+        width: 100vw;
+    }
+
+    .title_word {
+        font-size: 10vw;
+    }
+}
