@@ -76,18 +76,6 @@ body {
     align-items: center;
 }
 
-table {
-    border: none;
-    font-size: 22px;
-}
-
-td,
-th {
-    text-align: left;
-    padding-left: 42px;
-    padding-top: 22px;
-    padding-right: 42px;
-}
 
 #play_again {
     width: 100%;
@@ -106,8 +94,9 @@ th {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     font-size: 20px;
+    text-decoration: inherit;
+    color: inherit;
 }
 
 #play_again_button:hover {
@@ -135,6 +124,8 @@ th {
     width: 150px;
 }
 
+
+/* Modal */
 #leaderModal .modal-content {
     background-color: #60CDB5;
     border: solid 10px #FEE2A0;
@@ -153,4 +144,19 @@ th {
     top: 1.5rem;
     right: 1.5rem;
     z-index: 1;
+}
+
+.s-modal-top {
+    font-family: "ConcertOne";
+    font-size: 25px;
+}
+
+table {
+    border: none;
+    font-size: 20px;
+    text-align: center;
+}
+
+td:nth-child(2) {
+    min-width: 200px;
 }
