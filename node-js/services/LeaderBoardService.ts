@@ -9,4 +9,11 @@ export class LeaderBoardService {
                         .orderBy("score",'desc')
                         .limit(10);
     }
+
+    async insertLeaderBoard(user: string, score: number) {
+        return await this.knex.insert({
+            username: user,
+            score: score
+        }).into('leaderboard').returning('id');
+    }
 }

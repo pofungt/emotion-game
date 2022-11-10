@@ -3,6 +3,9 @@ import { leaderBoardController } from "../main";
 
 export const leaderBoardRoutes = () => {
 	const leaderBoardRoutes = express.Router();
-	leaderBoardRoutes.get('/board', leaderBoardController.getBoard);
+
+	leaderBoardRoutes.get('/', leaderBoardController.getBoard);
+  leaderBoardRoutes.post('/', leaderBoardController.insertBoard);
+
 	return leaderBoardRoutes;
 };

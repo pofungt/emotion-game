@@ -18,7 +18,7 @@ app.use(express.json());
 export const leaderBoardService = new LeaderBoardService(knex);
 export const leaderBoardController = new LeaderBoardController(leaderBoardService);
 
-app.use(leaderBoardRoutes());
+app.use('/board',leaderBoardRoutes());
 
 app.use(express.static(path.join(__dirname,'public')));
 

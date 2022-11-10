@@ -70,11 +70,26 @@ function callLeaderBoard() {
 function submitScore() {
   const inputBox = document.querySelector("#input-name");
   if (inputBox) {
-    inputBox.addEventListener('keypress', function (e) {
+    inputBox.addEventListener('keypress', async function (e) {
       if (e.key === 'Enter') {
-        console.log(inputBox.value);
         // To disable input after first input to avoid multiple input within short time
         inputBox.replaceWith(inputBox.cloneNode(true));
+        // Update database
+        const res = await fetch('/board', {
+          method: 'POST',
+          headers: {
+            "Content-Type": 'application/json',
+          },
+          body: JSON.stringify({
+            user: inputBox.value,
+            score: score
+          })
+        });
+        const result = await res.json();
+        // Confirm the name of player in the leaderboard
+        if (result.status) {
+          document.querySelector("#your-name").innerHTML = inputBox.value;
+        }
       }
     });
   }
