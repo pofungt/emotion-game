@@ -16,6 +16,7 @@ export async function seed(knex: Knex): Promise<void> {
         { username: "Aydin England", score: 7483 },
         { username: "Raylan Weiss", score: 9473 },
         { username: "Semaj Clarke", score: 15033 },
+        { username: "John Lennon", score: 3943 },
     ]);
 
 };
