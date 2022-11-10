@@ -24,5 +24,4 @@ export class LeaderBoardController {
             res.status(500).json({ msg: '[LBD002]: Failed to insert into Leader Board' });
         }
     }
-
 }

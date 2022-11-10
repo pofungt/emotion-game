@@ -160,3 +160,22 @@ table {
 td:nth-child(2) {
     min-width: 200px;
 }
+
+/* Toast */
+#successToast .toast-header {
+    background-color: #3ec182;
+    color: white;
+}
+
+#failToast .toast-header {
+    background-color: #C13E7D;
+    color: white;
+}
+
+#successToast .toast-body {
+    color:#3ec182;
+}
+
+#failToast .toast-body {
+    color:#C13E7D;
+}

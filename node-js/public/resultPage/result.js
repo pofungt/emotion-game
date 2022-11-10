@@ -86,9 +86,26 @@ function submitScore() {
           })
         });
         const result = await res.json();
-        // Confirm the name of player in the leaderboard
         if (result.status) {
+          // Confirm the name of player in the leaderboard
           document.querySelector("#your-name").innerHTML = inputBox.value;
+          // Show success toast for 5 seconds
+          document.querySelector("#successToast").classList.toggle("hide");
+          document.querySelector("#successToast").classList.toggle("show");
+          setTimeout(()=>{
+            document.querySelector("#successToast").classList.toggle("hide");
+            document.querySelector("#successToast").classList.toggle("show");
+          }, 5000);
+        } else {
+          // Update the error message in the fail toast
+          document.querySelector("#failToast .toast-body").innerHTML = result.msg;
+          // Show fail toast for 5 seconds
+          document.querySelector("#failToast").classList.toggle("hide");
+          document.querySelector("#failToast").classList.toggle("show");
+          setTimeout(()=>{
+            document.querySelector("#failToast").classList.toggle("hide");
+            document.querySelector("#failToast").classList.toggle("show");
+          }, 5000);
         }
       }
     });
