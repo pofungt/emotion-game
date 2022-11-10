@@ -6,6 +6,7 @@ export class LeaderBoardService {
     async getLeaderBoard() {
         return await this.knex.select('username','score')
                         .from('leaderboard')
-                        .orderBy("score",'desc');
+                        .orderBy("score",'desc')
+                        .limit(10);
     }
 }

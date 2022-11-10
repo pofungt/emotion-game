@@ -8,47 +8,51 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="result.css" />
-    <title>Emo Game - Result</title>
+    <title>Nicely Played!</title>
 </head>
 
 <body>
     <div id="main">
-        <div class="page_title">
-            <div class="title_word_container">
-                <div class="title_word">EMO</div>
-                <div class="title_word">GAME</div>
+        <div id="content">
+            <div class="title_word">Nicely Played!</div>
+            <img src="../assets/result_page_faces.svg">
+            <div id="result">
+                <div>
+                    <span class="result_title">You Scored:</span>
+                    <span id="score" class="result_data"></span>
+                </div>
+                <div>
+                    <span class="result_title">Correct: </span>
+                    <span id="correct" class="result_data"></span>
+                </div>
             </div>
         </div>
-        <div id="result">
-            <div>
-                <div>Your Scored:</div>
-                <div id="score"></div>
-            </div>
-            <div>
-                <div>Correct: </div>
-                <div id="correct">20/25</div>
-            </div>
+        <div id="play_again">
+            <div id="play_again_button">Play again</div>
         </div>
-        <div id="footer">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">Leaderboard</button>
+    </div>
+    <div id="footer">
+        <div id="leaderboard_button" data-bs-toggle="modal" data-bs-target="#leaderModal">
+            <img src="../assets/leaderboard_button.svg">
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <button type="button" class="cross btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="modal-body">
-                        <div class="s-modal-top">
-                            <h2>Leaderboard</h2>
-                        </div>
-                        <table id="leader-board">
-                        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="leaderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="cross btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="s-modal-top">
+                        <h2>Leaderboard</h2>
                     </div>
+                    <table id="leader-board">
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
         integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"

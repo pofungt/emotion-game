@@ -1,4 +1,4 @@
-@import "../fonts.css"; 
+@import "../fonts.css";
 
 body {
     height: 100vh;
@@ -16,55 +16,64 @@ body {
     background-color: #60CDB5;
     height: 80%;
     width: 100%;
-    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#content {
+    width: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
 
-h1 {
-    margin: 0px;
-    border: 0px;
-    font-size: 100px;
+#content>img {
+    width: 400px;
 }
 
-h2 {
-    color: #FFF;
-}
-
-#exampleModal .modal-content {
-    background-color: #60CDB5;
-    border: solid 10px #FEE2A0;
-    border-radius: 30px;
-    color: #FFF;
-}
-
-#exampleModal .modal-body {
+.title_word {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    font-family: "ConcertOne";
+    font-size: 50px;
 }
 
-.title_word_container {
+#result {
+    height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 }
 
-.title_word {
-    font-family: "junegull";
-    font-size: 50px;
+#result div {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
 }
 
-.cross{
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 1;
+.result_title {
+    font-size: 20px;
+    width: 150px;
+    min-height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.result_data {
+    font-family: "ConcertOne";
+    font-size: 25px;
+    width: 150px;
+    min-height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 table {
@@ -72,20 +81,76 @@ table {
     font-size: 22px;
 }
 
-td, th {
+td,
+th {
     text-align: left;
     padding-left: 42px;
     padding-top: 22px;
     padding-right: 42px;
 }
 
+#play_again {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#play_again_button {
+    width: 140px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#play_again_button:hover {
+    opacity: 0.5;
+}
+
 #footer {
-    position: absolute;
-    bottom: 0px;
     background-color: #FEE2A0;
     height: 20%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#leaderboard_button {
+    cursor: pointer;
+}
+
+#leaderboard_button:hover {
+    opacity: 0.8;;
+}
+
+#leaderboard_button img {
+    width: 150px;
+}
+
+#leaderModal .modal-content {
+    background-color: #60CDB5;
+    border: solid 10px #FEE2A0;
+    border-radius: 30px;
+    color: #FFF;
+}
+
+#leaderModal .modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cross {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1;
 }
