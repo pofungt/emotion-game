@@ -29,7 +29,7 @@ function camera() {
             src.copyTo(dst);
             cv.cvtColor(dst, gray, cv.COLOR_RGBA2GRAY, 0);
             frame64 = getFrame();
-            const res = await fetch('https://emogame.duncantang.dev:8050/stream',{
+            const res = await fetch('https://python.duncantang.dev/stream',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
