@@ -56,11 +56,11 @@ function camera() {
 
             if (prediction) {
                 if (prediction.uploaded) {
+                    if (loading) {
+                        document.querySelector("#loading-page").style.display = "none";
+                        loading = false;
+                    }
                     if (prediction.result.length) {
-                        if (loading) {
-                            document.querySelector("#loading-page").style.display = "none";
-                            loading = false;
-                        }
                         x = prediction.result[0].x;
                         y = prediction.result[0].y;
                         w = prediction.result[0].w;

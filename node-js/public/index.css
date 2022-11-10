@@ -180,8 +180,9 @@ canvas {
 
 /* Mobile Responsive */
 @media (max-width: 550px) {
-    #cam, #game_started_container {
+    #cam, #game_started_container, video, canvas {
         width: 366px;
+        height: 256px;
     }
     #game_started {
         width: 350px;
