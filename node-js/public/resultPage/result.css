@@ -128,7 +128,7 @@ body {
 /* Modal */
 #leaderModal .modal-content {
     background-color: #60CDB5;
-    border: solid 10px #FEE2A0;
+    border: solid 6px #FEE2A0;
     border-radius: 30px;
     color: #FFF;
 }
