@@ -72,7 +72,9 @@ function submitScore() {
   if (inputBox) {
     inputBox.addEventListener('keypress', function (e) {
       if (e.key === 'Enter') {
-        console.log(inputBox.value)
+        console.log(inputBox.value);
+        // To disable input after first input to avoid multiple input within short time
+        inputBox.replaceWith(inputBox.cloneNode(true));
       }
     });
   }
