@@ -1,10 +1,18 @@
 function camera() {
     cv['onRuntimeInitialized'] = ()=>{
+        let videoWidth = 480;
+        let videoHeight = 240;
+        if (screen.width <= 550) {
+            document.querySelector("#videoInput").setAttribute("width","350");
+            document.querySelector("#canvasOutput").setAttribute("width","350");
+            videoWidth = 350;
+            videoHeight = 240;
+        }
         const constraints = {
             audio: false,
             video: {
-                width: 480,
-                height: 240
+                width: videoWidth,
+                height: videoHeight
             }
         }
         let video = document.getElementById('videoInput');
@@ -22,6 +30,7 @@ function camera() {
         let cap = new cv.VideoCapture(videoInput);
 
         const FPS = 30;
+        let loading = true;
         
         async function processVideo() {
             let begin = Date.now();
@@ -48,6 +57,10 @@ function camera() {
             if (prediction) {
                 if (prediction.uploaded) {
                     if (prediction.result.length) {
+                        if (loading) {
+                            document.querySelector("#loading-page").style.display = "none";
+                            loading = false;
+                        }
                         x = prediction.result[0].x;
                         y = prediction.result[0].y;
                         w = prediction.result[0].w;
