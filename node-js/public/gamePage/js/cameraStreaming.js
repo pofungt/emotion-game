@@ -2,7 +2,7 @@ function camera() {
     cv['onRuntimeInitialized'] = ()=>{
         let videoWidth = 320;
         let videoHeight = 240;
-        if (screen.width <= 440) {
+        if (window.innerWidth <= 440) {
             document.querySelector("#videoInput").setAttribute("width","280");
             document.querySelector("#canvasOutput").setAttribute("width","280");
             videoWidth = 280;

@@ -2,10 +2,14 @@ function camera() {
     cv['onRuntimeInitialized'] = ()=>{
         let videoWidth = 480;
         let videoHeight = 240;
-        if (screen.width <= 550) {
+        if (window.innerWidth <= 550) {
+            // Change video adn canvas size
             document.querySelector("#videoInput").setAttribute("width","350");
             document.querySelector("#canvasOutput").setAttribute("width","350");
             videoWidth = 350;
+            // Change game intro
+            document.querySelector("#intro_container_mobile_screen").style.display = "flex";
+            document.querySelector("#intro_container_big_screen").style.display = "none";
         }
         const constraints = {
             audio: false,

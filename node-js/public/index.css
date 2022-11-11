@@ -178,6 +178,41 @@ canvas {
     background: transparent url("./assets/cross_mark.svg") center/1em auto no-repeat;
 }
 
+#intro_container_big_screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#intro_container_mobile_screen {
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#introModal .modal-body img {
+    width: 80%;
+    border-radius: 5px;
+    border: solid 1px white;
+}
+
+.intro_description {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.intro_description div {
+    width: 100%;
+    text-align: left;
+    font-size: 15px;
+}
+
 /* Mobile Responsive */
 @media (max-width: 550px) {
     #cam, #game_started_container, video, canvas {
