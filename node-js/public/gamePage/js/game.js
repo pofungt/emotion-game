@@ -52,8 +52,9 @@ async function gameStart() {
         await sleep(() => { countDownToStart.style.display = "none"; }, 1000);
         // Loop through every questions in the level
         for (let j = 0; j < 5; j++) {
-            // Update the point in result board
+            // Update the point shown
             document.querySelector("#result_point").innerHTML = `Points: ${game.point}`;
+            document.querySelector("#result_mobile").innerHTML = `Points: ${game.point}`;
             // Start timer
             const timer = new Timer(LEVELS_TIME[game.level]);
             timer.start();
@@ -65,6 +66,7 @@ async function gameStart() {
                 <img src="${emotionQuestionImg}">
                 <div id="emo_description">${emotionQuestion}</div>
             `;
+            document.querySelector("#question_mobile").innerHTML = emotionQuestion;
             // Check if player makes the right emotion
             let continuePlay = true;
             let answeredCorrectly = false;
@@ -105,12 +107,12 @@ async function gameStart() {
                 }, 1000);
                 // Update result board
                 document.querySelector(`#result_${j+1}`).innerHTML = `
-                <div class="number_of_question">${j+1}</div>
-                <div class="emotion_type">${emotionQuestion}</div>
-                <div class="right_or_wrong">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-            `
+                    <div class="number_of_question">${j+1}</div>
+                    <div class="emotion_type">${emotionQuestion}</div>
+                    <div class="right_or_wrong">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                `;
             }
         }
         game.nextLevel();
