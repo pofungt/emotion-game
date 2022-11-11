@@ -13,7 +13,8 @@ export class Timer {
         this.timeLeft = this.timeLeft - 1;
         if (this.timeLeft >= 0) {
             const left = ("0"+`${Math.floor(this.timeLeft / 100)}`).slice(-2);
-            const right = ("0"+`${this.timeLeft % 100}`).slice(-2);
+            // Convert into base 60 to show on the clock
+            const right = ("0"+`${Math.round(((this.timeLeft % 100)/100)*60)}`).slice(-2);
             document.querySelector("#left").innerHTML = left;
             document.querySelector("#colon").innerHTML = ":";
             document.querySelector("#right").innerHTML = right;

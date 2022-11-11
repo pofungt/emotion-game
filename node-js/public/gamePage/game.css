@@ -62,7 +62,7 @@ body {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-50%,-60%);
+    transform: translate(-50%, -60%);
     font-size: 40px;
     font-family: "junegull";
     text-shadow: 3px 3px black;
@@ -160,7 +160,8 @@ canvas {
     z-index: 1
 }
 
-#correct_answer_container, #wrong_answer_container {
+#correct_answer_container,
+#wrong_answer_container {
     border: solid 8px #FEE2A0;
     position: absolute;
     border-radius: 20px;
@@ -229,16 +230,47 @@ canvas {
 
 #timer {
     font-size: 50px;
-    color:#FEE2A0;
+    color: #FEE2A0;
     font-family: "junegull";
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
-#left, #colon, #right {
+#left,
+#colon,
+#right {
     width: 50px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1200px) {
+
+    #question_frame,
+    #result_frame {
+        display: none;
+    }
+}
+
+@media (max-width: 440px) {
+
+    #game_part,
+    #question_frame,
+    #result_frame,
+    #correct_answer_container,
+    #wrong_answer_container,
+    video,
+    canvas {
+        width: 296px;
+        height: 256px;
+    }
+
+    #question_frame img,
+    #correct_answer,
+    #wrong_answer {
+        width: 280px;
+    }
 }

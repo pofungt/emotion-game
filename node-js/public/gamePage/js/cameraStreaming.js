@@ -1,10 +1,17 @@
 function camera() {
     cv['onRuntimeInitialized'] = ()=>{
+        let videoWidth = 320;
+        let videoHeight = 240;
+        if (screen.width <= 440) {
+            document.querySelector("#videoInput").setAttribute("width","280");
+            document.querySelector("#canvasOutput").setAttribute("width","280");
+            videoWidth = 280;
+        }
         const constraints = {
             audio: false,
             video: {
-                width: 320,
-                height: 240
+                width: videoWidth,
+                height: videoHeight
             }
         }
         let video = document.getElementById('videoInput');

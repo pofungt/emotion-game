@@ -6,7 +6,6 @@ function camera() {
             document.querySelector("#videoInput").setAttribute("width","350");
             document.querySelector("#canvasOutput").setAttribute("width","350");
             videoWidth = 350;
-            videoHeight = 240;
         }
         const constraints = {
             audio: false,
