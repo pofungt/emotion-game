@@ -1,4 +1,4 @@
-# c01-bad-proj-02
+# Emotion Game
 
 ## Start node-js server
 ```bash
