@@ -1,11 +1,11 @@
 function camera() {
-    cv['onRuntimeInitialized'] = ()=>{
+    cv['onRuntimeInitialized'] = async () => {
         let videoWidth = 480;
         let videoHeight = 240;
         if (window.innerWidth <= 550) {
             // Change video adn canvas size
-            document.querySelector("#videoInput").setAttribute("width","350");
-            document.querySelector("#canvasOutput").setAttribute("width","350");
+            document.querySelector("#videoInput").setAttribute("width", "350");
+            document.querySelector("#canvasOutput").setAttribute("width", "350");
             videoWidth = 350;
             // Change game intro
             document.querySelector("#intro_container_mobile_screen").style.display = "flex";
@@ -19,34 +19,34 @@ function camera() {
             }
         }
         let video = document.getElementById('videoInput');
-        navigator.mediaDevices.getUserMedia(constraints)
-        .then(function(stream) {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia(constraints);
             video.srcObject = stream;
             video.play();
-        })
-        .catch(function(err) {
+        } catch (err) {
             console.log("[Error]: " + err);
-        });
+        }
+
         let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
         let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
         let gray = new cv.Mat();
-        let cap = new cv.VideoCapture(videoInput);
+        let cap = new cv.VideoCapture(video);
 
         const FPS = 30;
         let loading = true;
-        
+
         async function processVideo() {
             let begin = Date.now();
             cap.read(src);
             src.copyTo(dst);
             cv.cvtColor(dst, gray, cv.COLOR_RGBA2GRAY, 0);
             frame64 = getFrame();
-            const res = await fetch('https://pythonAI.duncantang.dev/stream',{
+            const res = await fetch('https://pythonAI.duncantang.dev/stream', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({img: frame64})
+                body: JSON.stringify({ img: frame64 })
             });
             prediction = await res.json();
 
@@ -76,21 +76,22 @@ function camera() {
             if (!document.querySelector("#introModal").classList.contains("show")) {
                 if (predictResult === "Happy") {
                     document.querySelector("#game_started_container").style.display = "block";
-                    setInterval(()=>{
-                        window.location.href = "./gamePage/game.html";
-                    }, 2000);
+                    setTimeout(() => { window.location.href = "./gamePage/game.html"; }, 2000);
                 }
             }
 
-            cv.rectangle(dst, new cv.Point(x, y), new cv.Point(x+w, y+h), new cv.Scalar(0, 0, 255, 255), 1, cv.LINE_AA, 0)
-            cv.rectangle(dst, new cv.Point(x, y), new cv.Point(x+w, y+h), new cv.Scalar(50, 50, 255, 255), 2, cv.LINE_AA, 0)
-            cv.rectangle(dst, new cv.Point(x, y-40), new cv.Point(x+w, y), new cv.Scalar(50, 50, 255, 255), -1, cv.LINE_AA, 0)
-            cv.putText(dst, predictResult, new cv.Point(x, y-10),
-                        cv.FONT_HERSHEY_SIMPLEX, 0.8, new cv.Scalar(255, 255, 255, 255), 2, cv.LINE_AA, 0)
+            cv.rectangle(dst, new cv.Point(x, y), new cv.Point(x + w, y + h), new cv.Scalar(50, 50, 255, 255), 2, cv.LINE_AA, 0)
+            cv.rectangle(dst, new cv.Point(x, y - 40), new cv.Point(x + w, y), new cv.Scalar(50, 50, 255, 255), -1, cv.LINE_AA, 0)
+            cv.putText(dst, predictResult, new cv.Point(x, y - 10),
+                cv.FONT_HERSHEY_SIMPLEX, 0.8, new cv.Scalar(255, 255, 255, 255), 2, cv.LINE_AA, 0)
             cv.imshow("canvasOutput", dst);
             // schedule next one.
-            let delay = 1000/FPS - (Date.now() - begin);
-            setTimeout(processVideo, delay);
+            let delay = 1000 / FPS - (Date.now() - begin);
+            if (delay > 0) {
+                setTimeout(processVideo, delay);
+            } else {
+                setTimeout(processVideo, 0);
+            }
         }
 
         function getFrame() {

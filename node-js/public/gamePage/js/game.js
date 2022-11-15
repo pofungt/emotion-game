@@ -37,10 +37,10 @@ async function gameStart() {
         if (i > 0) {
             document.querySelector(`#level_${i}`).style.fontSize = "unset";
         }
-        document.querySelector(`#level_${i+1}`).style.fontSize = "40px";
+        document.querySelector(`#level_${i + 1}`).style.fontSize = "40px";
         // Clear result board
         const result_elements = document.querySelectorAll(".result_elements");
-        result_elements.forEach((each)=>{
+        result_elements.forEach((each) => {
             each.innerHTML = "";
         });
         // Countdown to start
@@ -72,15 +72,15 @@ async function gameStart() {
             let answeredCorrectly = false;
             while (continuePlay && timer.getTimeUsed() < LEVELS_TIME[game.level]) {
                 // Set interval to not block the event loop
-                await sleep(() => {
+                await sleep(async () => {
                     if (window.emotion === emotionQuestion && window.emotionTime >= 2) {
                         // Get the time used to get correct answer
                         const timeUsed = timer.getTimeUsed();
                         // Alter the variables of the game
                         game.correct(timeUsed);
                         // Update result board
-                        document.querySelector(`#result_${j+1}`).innerHTML = `
-                            <div class="number_of_question">${j+1}</div>
+                        document.querySelector(`#result_${j + 1}`).innerHTML = `
+                            <div class="number_of_question">${j + 1}</div>
                             <div class="emotion_type">${emotionQuestion}</div>
                             <div class="right_or_wrong">
                                 <i class="fa-solid fa-check"></i>
@@ -91,7 +91,7 @@ async function gameStart() {
                         continuePlay = false;
                         // Show correct div
                         document.querySelector("#correct_answer_container").style.display = "flex";
-                        setTimeout(()=>{
+                        await sleep(() => {
                             document.querySelector("#correct_answer_container").style.display = "none";
                         }, 1000);
                     }
@@ -102,12 +102,12 @@ async function gameStart() {
             if (!answeredCorrectly) {
                 // Show wrong div
                 document.querySelector("#wrong_answer_container").style.display = "flex";
-                setTimeout(()=>{
+                await sleep(() => {
                     document.querySelector("#wrong_answer_container").style.display = "none";
                 }, 1000);
                 // Update result board
-                document.querySelector(`#result_${j+1}`).innerHTML = `
-                    <div class="number_of_question">${j+1}</div>
+                document.querySelector(`#result_${j + 1}`).innerHTML = `
+                    <div class="number_of_question">${j + 1}</div>
                     <div class="emotion_type">${emotionQuestion}</div>
                     <div class="right_or_wrong">
                         <i class="fa-solid fa-xmark"></i>

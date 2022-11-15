@@ -1,5 +1,5 @@
 function camera() {
-    cv['onRuntimeInitialized'] = ()=>{
+    cv['onRuntimeInitialized'] = async ()=>{
         let videoWidth = 320;
         let videoHeight = 240;
         if (window.innerWidth <= 440) {
@@ -15,18 +15,19 @@ function camera() {
             }
         }
         let video = document.getElementById('videoInput');
-        navigator.mediaDevices.getUserMedia(constraints)
-        .then(function(stream) {
+
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia(constraints);
             video.srcObject = stream;
             video.play();
-        })
-        .catch(function(err) {
+        } catch (err) {
             console.log("[Error]: " + err);
-        });
+        }
+
         let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
         let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
         let gray = new cv.Mat();
-        let cap = new cv.VideoCapture(videoInput);
+        let cap = new cv.VideoCapture(video);
 
         const FPS = 30;
         
@@ -74,7 +75,6 @@ function camera() {
                 }
             }
 
-            cv.rectangle(dst, new cv.Point(x, y), new cv.Point(x+w, y+h), new cv.Scalar(0, 0, 255, 255), 1, cv.LINE_AA, 0)
             cv.rectangle(dst, new cv.Point(x, y), new cv.Point(x+w, y+h), new cv.Scalar(50, 50, 255, 255), 2, cv.LINE_AA, 0)
             cv.rectangle(dst, new cv.Point(x, y-40), new cv.Point(x+w, y), new cv.Scalar(50, 50, 255, 255), -1, cv.LINE_AA, 0)
             cv.putText(dst, predictResult, new cv.Point(x, y-10),

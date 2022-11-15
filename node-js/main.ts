@@ -1,12 +1,12 @@
 import dotenv from "dotenv";
-dotenv.config();
-
 import express from 'express';
 import path from "path";
 import Knex from "knex";
 import { leaderBoardRoutes } from "./Routes/leaderboardRoute";
 import {LeaderBoardController} from "./controllers/LeaderBoardController";
 import {LeaderBoardService} from "./services/LeaderBoardService";
+
+dotenv.config();
 
 const knexConfig = require("./knexfile");
 const configMode = process.env.NODE_ENV || "development";
