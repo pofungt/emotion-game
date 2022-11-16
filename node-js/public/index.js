@@ -38,7 +38,6 @@ function camera() {
         async function processVideo() {
             let begin = Date.now();
             cap.read(src);
-            console.log(src)
             src.copyTo(dst);
             cv.cvtColor(dst, gray, cv.COLOR_RGBA2GRAY, 0);
             const frame64 = getFrame();
@@ -100,7 +99,6 @@ function camera() {
             canvas.width = video.width;
             canvas.height = video.height;
             canvas.getContext('2d').drawImage(video, 0, 0);
-            console.log(canvas)
             const data = canvas.toDataURL('image/jpeg');
             return data;
         }
