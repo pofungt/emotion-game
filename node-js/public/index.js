@@ -41,7 +41,6 @@ function camera() {
             src.copyTo(dst);
             cv.cvtColor(dst, gray, cv.COLOR_RGBA2GRAY, 0);
             frame64 = getFrame();
-            console.log(frame64)
             const res = await fetch('https://pythonAI.duncantang.dev/stream', {
                 method: 'POST',
                 headers: {
@@ -100,6 +99,7 @@ function camera() {
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            console.log(canvas)
             const data = canvas.toDataURL('image/jpeg');
             return data;
         }
