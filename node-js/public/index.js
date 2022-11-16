@@ -14,8 +14,8 @@ function camera() {
         const constraints = {
             audio: false,
             video: {
-                width: videoWidth,
-                height: videoHeight
+                width: videoHeight,
+                height: videoWidth
             }
         }
         let video = document.getElementById('videoInput');
