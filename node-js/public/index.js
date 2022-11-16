@@ -31,6 +31,8 @@ function camera() {
         let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
         let gray = new cv.Mat();
         let cap = new cv.VideoCapture(video);
+        console.log(`${src.width} ${src.height}`)
+        console.log(`${dst.width} ${dst.height}`)
 
         const FPS = 30;
         let loading = true;
@@ -98,7 +100,6 @@ function camera() {
             const canvas = document.createElement('canvas');
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-            console.log(`${video.videoWidth} ${video.videoHeight}`)
             canvas.getContext('2d').drawImage(video, 0, 0);
             const data = canvas.toDataURL('image/jpeg');
             return data;
