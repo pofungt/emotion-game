@@ -31,8 +31,7 @@ function camera() {
         let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
         let gray = new cv.Mat();
         let cap = new cv.VideoCapture(video);
-        console.log(`${src.width} ${src.height}`)
-        console.log(`${dst.width} ${dst.height}`)
+        console.log(dst)
 
         const FPS = 30;
         let loading = true;
