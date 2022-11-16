@@ -42,7 +42,7 @@ function camera() {
             cap.read(src);
             src.copyTo(dst);
             cv.cvtColor(dst, gray, cv.COLOR_RGBA2GRAY, 0);
-            frame64 = getFrame();
+            const frame64 = getFrame();
             const res = await fetch('https://pythonAI.duncantang.dev/stream',{
                 method: 'POST',
                 headers: {
@@ -50,7 +50,7 @@ function camera() {
                 },
                 body: JSON.stringify({img: frame64})
             });
-            prediction = await res.json();
+            const prediction = await res.json();
 
             let x = 0;
             let y = 0;
