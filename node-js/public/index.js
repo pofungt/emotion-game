@@ -98,7 +98,7 @@ function camera() {
             const canvas = document.createElement('canvas');
             canvas.width = video.width;
             canvas.height = video.height;
-            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.getContext('2d').drawImage(video, 0, 0);
             console.log(canvas)
             const data = canvas.toDataURL('image/jpeg');
             return data;
