@@ -31,7 +31,6 @@ function camera() {
         let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
         let gray = new cv.Mat();
         let cap = new cv.VideoCapture(video);
-        console.log(dst)
 
         const FPS = 30;
         let loading = true;
@@ -42,6 +41,7 @@ function camera() {
             src.copyTo(dst);
             cv.cvtColor(dst, gray, cv.COLOR_RGBA2GRAY, 0);
             frame64 = getFrame();
+            console.log(frame64)
             const res = await fetch('https://pythonAI.duncantang.dev/stream', {
                 method: 'POST',
                 headers: {
