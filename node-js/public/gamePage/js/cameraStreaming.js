@@ -14,8 +14,8 @@ function camera() {
                 height: videoHeight
             }
         }
-        if (isIOS()) {
-            // If iOS, height and width are swapped
+        if (isIOS() && window.innerHeight < window.innerWidth) {
+            // If iOS and vertical, height and width are swapped
             constraints.video.width = videoHeight;
             constraints.video.height = videoWidth;
         }
