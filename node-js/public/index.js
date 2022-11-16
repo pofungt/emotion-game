@@ -18,8 +18,8 @@ function camera() {
                 height: videoHeight
             }
         }
-        if (isIOS() && window.innerHeight < window.innerWidth) {
-            // If iOS and vertical, height and width are swapped
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            // If portrait, swap height and width
             constraints.video.width = videoHeight;
             constraints.video.height = videoWidth;
         }
@@ -106,11 +106,6 @@ function camera() {
             canvas.getContext('2d').drawImage(video, 0, 0);
             const data = canvas.toDataURL('image/jpeg');
             return data;
-        }
-
-        function isIOS() {
-            let isIOS = /iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-            return isIOS;
         }
 
         // schedule first one.
