@@ -1,6 +1,7 @@
 ScreenOrientation.onchange = function(e) {
-    console.log(e)
+    location.reload();
 }
+
 function camera() {
     cv['onRuntimeInitialized'] = async () => {
         let videoWidth = 480;
