@@ -38,6 +38,7 @@ function camera() {
         async function processVideo() {
             let begin = Date.now();
             cap.read(src);
+            console.log(video)
             src.copyTo(dst);
             cv.cvtColor(dst, gray, cv.COLOR_RGBA2GRAY, 0);
             const frame64 = getFrame();
