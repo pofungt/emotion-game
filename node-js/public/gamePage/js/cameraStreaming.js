@@ -14,6 +14,12 @@ function camera() {
                 height: videoHeight
             }
         }
+        if (isIOS()) {
+            // If iOS, height and width are swapped
+            constraints.video.width = videoHeight;
+            constraints.video.height = videoWidth;
+        }
+
         let video = document.getElementById('videoInput');
 
         try {
@@ -87,11 +93,16 @@ function camera() {
 
         function getFrame() {
             const canvas = document.createElement('canvas');
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
+            canvas.width = video.width;
+            canvas.height = video.height;
             canvas.getContext('2d').drawImage(video, 0, 0);
             const data = canvas.toDataURL('image/jpeg');
             return data;
+        }
+
+        function isIOS() {
+            let isIOS = /iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            return isIOS;
         }
 
         // schedule first one.
