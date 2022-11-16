@@ -68,7 +68,7 @@ body {
     height: 256px;
 }
 
-video {
+#videoInput {
     border-radius: 20px;
     position: absolute;
     top: 0;
@@ -78,7 +78,7 @@ video {
     z-index: -1;
 }
 
-canvas {
+#canvasOutput {
     position: absolute;
     border: solid 8px #FEE2A0;
     background-color: black;

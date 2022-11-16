@@ -27,8 +27,8 @@ function camera() {
             console.log("[Error]: " + err);
         }
 
-        let src = new cv.Mat(video.width, video.height, cv.CV_8UC4);
-        let dst = new cv.Mat(video.width, video.height, cv.CV_8UC1);
+        let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
+        let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
         let gray = new cv.Mat();
         let cap = new cv.VideoCapture(video);
 
@@ -99,7 +99,7 @@ function camera() {
             const canvas = document.createElement('canvas');
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-            canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
             const data = canvas.toDataURL('image/jpeg');
             return data;
         }
