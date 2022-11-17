@@ -39,7 +39,11 @@ jobs:
       with:
         command: |
           cd emotion-game/node-js
-
+          git pull origin main
+          yarn install
+          yarn knex migrate:latest --env production
+          yarn knex seed:run --env production
+          forever restart -c 'yarn start' .
         host: emogame.duncantang.dev
         user: ubuntu
         key: ${{secrets.SSH_PRIVATE_KEY}}
