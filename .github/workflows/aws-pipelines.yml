@@ -39,7 +39,7 @@ jobs:
       with:
         command: |
           cd emotion-game/node-js
-          git pull
+          git pull origin main
           yarn install
           yarn knex migrate:latest --env production
           forever restart -c 'yarn start'
