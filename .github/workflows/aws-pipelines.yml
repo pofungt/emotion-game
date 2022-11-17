@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  POSTGRES_DB: emo-game-test
+  POSTGRES_DB: test-emogame
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
   POSTGRES_HOST: postgres
