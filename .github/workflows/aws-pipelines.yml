@@ -47,3 +47,14 @@ jobs:
         host: emogame.duncantang.dev
         user: ubuntu
         key: ${{secrets.SSH_PRIVATE_KEY}}
+    - name: ssh to restart python
+      uses: fifsky/ssh-action@master
+      with:
+        command: |
+          cd emotion-game/python
+          git pull origin main
+          pip install -r requirements.txt
+          forever restart -c 'python app.py' .
+        host: pythonAI.duncantang.dev
+        user: ubuntu
+        key: ${{secrets.PYTHON_SSH_PRIVATE_KEY}}
