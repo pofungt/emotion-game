@@ -3,8 +3,8 @@ import express from 'express';
 import path from "path";
 import Knex from "knex";
 import { leaderBoardRoutes } from "./Routes/leaderboardRoute";
-import {LeaderBoardController} from "./controllers/LeaderBoardController";
-import {LeaderBoardService} from "./services/LeaderBoardService";
+import { LeaderBoardController } from "./controllers/LeaderBoardController";
+import { LeaderBoardService } from "./services/LeaderBoardService";
 
 dotenv.config();
 
@@ -18,13 +18,13 @@ app.use(express.json());
 export const leaderBoardService = new LeaderBoardService(knex);
 export const leaderBoardController = new LeaderBoardController(leaderBoardService);
 
-app.use('/board',leaderBoardRoutes());
+app.use('/board', leaderBoardRoutes());
 
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res) => {
     res.status(404);
-    res.sendFile(path.join(__dirname,'public','404.html'));
+    res.sendFile(path.join(__dirname, 'public', '404.html'));
 });
 
 const PORT = 8080;
