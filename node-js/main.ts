@@ -19,6 +19,9 @@ export const leaderBoardService = new LeaderBoardService(knex);
 export const leaderBoardController = new LeaderBoardController(leaderBoardService);
 
 app.use('/board', leaderBoardRoutes());
+app.use('/path', (req, res) => {
+    res.json({AI_API_HOSTNAME: process.env.AI_API_HOSTNAME});
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 

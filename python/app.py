@@ -1,5 +1,3 @@
-import cv2
-import numpy as np
 from model import Model
 from sanic import Sanic
 from sanic.response import json
@@ -22,15 +20,22 @@ async def test(request):
     try:
         image = request.files.get("test")
         image = PIL.Image.open(io.BytesIO(image.body))
-        result = model.test(image)
-        return json({
-            "uploaded": True,
-            "result": result
-        })
+        result = model.predict(image)
+        if result:
+            return json({
+                "uploaded": True,
+                "result": result
+            })
+        else:
+            return json({
+                "uploaded": False,
+                "Error": "No Face Detected"
+            })
     except Exception as e:
-        print("Error: " + e)
+        print(e)
         return json({
-            "uploaded": False
+            "uploaded": False,
+            "Error": "Internal Error"
         })
 
 @app.post('/stream')
@@ -39,15 +44,22 @@ async def stream(request):
         image_json = request.json
         image = re.sub('^data:image/.+;base64,', '', image_json["img"])
         image = PIL.Image.open(io.BytesIO(base64.b64decode(image)))
-        result = model.stream(image)
-        return json({
-            "uploaded": True,
-            "result": result
-        })
+        result = model.predict(image)
+        if result:
+            return json({
+                "uploaded": True,
+                "result": result
+            })
+        else:
+            return json({
+                "uploaded": False,
+                "Error": "No Face Detected"
+            })
     except Exception as e:
-        print("Error: " + e)
+        print(e)
         return json({
-            "uploaded": False
+            "uploaded": False,
+            "Error": "Internal Error"
         })
 
 

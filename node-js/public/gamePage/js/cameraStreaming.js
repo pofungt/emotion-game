@@ -37,13 +37,16 @@ function camera() {
 
         const FPS = 30;
         
+        const hostname_result = await fetch('/path');
+        const AI_API_HOSTNAME = (await hostname_result.json()).AI_API_HOSTNAME;
+
         async function processVideo() {
             let begin = Date.now();
             cap.read(src);
             src.copyTo(dst);
             cv.cvtColor(dst, gray, cv.COLOR_RGBA2GRAY, 0);
             const frame64 = getFrame();
-            const res = await fetch('https://pythonAI.duncantang.dev/stream',{
+            const res = await fetch(AI_API_HOSTNAME + '/stream',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
