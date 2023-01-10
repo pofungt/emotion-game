@@ -7,3 +7,4 @@ package-lock.json
 myenv
 data
 __pycache__
+.pytest_cache
