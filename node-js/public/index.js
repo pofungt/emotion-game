@@ -1,16 +1,29 @@
-function camera() {
+function camera(page) {
     cv['onRuntimeInitialized'] = async () => {
-        let videoWidth = 480;
-        let videoHeight = 240;
-        if (window.innerWidth <= 550) {
-            // Change video adn canvas size
-            document.querySelector("#videoInput").setAttribute("width", "350");
-            document.querySelector("#canvasOutput").setAttribute("width", "350");
-            videoWidth = 350;
-            // Change game intro
-            document.querySelector("#intro_container_mobile_screen").style.display = "flex";
-            document.querySelector("#intro_container_big_screen").style.display = "none";
+        let videoWidth;
+        let videoHeight;
+        if (page === "index") {
+            videoWidth = 480;
+            videoHeight = 240;
+            if (window.innerWidth <= 550) {
+                // Change video adn canvas size
+                document.querySelector("#videoInput").setAttribute("width", "350");
+                document.querySelector("#canvasOutput").setAttribute("width", "350");
+                videoWidth = 350;
+                // Change game intro
+                document.querySelector("#intro_container_mobile_screen").style.display = "flex";
+                document.querySelector("#intro_container_big_screen").style.display = "none";
+            }
+        } else if (page === "game") {
+            videoWidth = 320;
+            videoHeight = 240;
+            if (window.innerWidth <= 440) {
+                document.querySelector("#videoInput").setAttribute("width","280");
+                document.querySelector("#canvasOutput").setAttribute("width","280");
+                videoWidth = 280;
+            }
         }
+
         const constraints = {
             audio: false,
             video: {
@@ -18,12 +31,14 @@ function camera() {
                 height: videoHeight
             }
         }
+
         if (window.matchMedia("(orientation: portrait)").matches) {
             // If portrait, swap height and width
             constraints.video.width = videoHeight;
             constraints.video.height = videoWidth;
         }
         let video = document.getElementById('videoInput');
+
         try {
             const stream = await navigator.mediaDevices.getUserMedia(constraints);
             video.srcObject = stream;
@@ -67,10 +82,6 @@ function camera() {
 
             if (prediction) {
                 if (prediction.uploaded) {
-                    if (loading) {
-                        document.querySelector("#loading-page").style.display = "none";
-                        loading = false;
-                    }
                     if (prediction.result.length) {
                         x = prediction.result[0].x;
                         y = prediction.result[0].y;
@@ -79,12 +90,27 @@ function camera() {
                         predictResult = prediction.result[0].predict;
                         probability = prediction.result[0].probability;
                     }
-                }
-            }
-            if (!document.querySelector("#introModal").classList.contains("show")) {
-                if (predictResult === "Happy") {
-                    document.querySelector("#game_started_container").style.display = "block";
-                    setTimeout(() => { window.location.href = "./gamePage/game.html"; }, 2000);
+                    if (page === "index") {
+                        if (loading) {
+                            document.querySelector("#loading-page").style.display = "none";
+                            loading = false;
+                        }
+                        if (!document.querySelector("#introModal").classList.contains("show")) {
+                            if (predictResult === "Happy") {
+                                document.querySelector("#game_started_container").style.display = "block";
+                                setTimeout(() => { window.location.href = "./gamePage/game.html"; }, 2000);
+                            }
+                        }
+                    } else if (page === "game") {
+                        if (predictResult === window.emotion) {
+                            // Mark the number of frames that player maintains the same emotion
+                            window.emotionTime ++;
+                        } else {
+                            window.emotion = predictResult;
+                            // Player changes emotion, so reset the frame counter
+                            window.emotionTime = 0;
+                        }
+                    }
                 }
             }
 
