@@ -12,7 +12,7 @@ env:
   POSTGRES_HOST: postgres
 
 jobs:
-  testing:
+  testing-node:
     runs-on: ubuntu-latest
     container: node:latest
     services:
@@ -30,9 +30,9 @@ jobs:
           yarn install 
           yarn knex migrate:latest --env test
           yarn jest
-  deploy:
+  deploy-node:
     runs-on: ubuntu-latest
-    needs: testing
+    needs: testing-node
     steps:
     - name: ssh to pull latest version
       uses: fifsky/ssh-action@master
@@ -47,6 +47,25 @@ jobs:
         host: emogame.duncantang.dev
         user: ubuntu
         key: ${{secrets.SSH_PRIVATE_KEY}}
+  testing-python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Set Up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+      - name: Install package
+        run: |
+          cd python
+          pip install -r requirements.txt
+      - name: Run test
+        run: python -m pytest
+  deploy-python:
+    runs-on: ubuntu-latest
+    needs: testing-python
+    steps:
     - name: ssh to restart python
       uses: fifsky/ssh-action@master
       with:
