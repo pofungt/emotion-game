@@ -37,8 +37,8 @@ jobs:
     steps:
     - name: ssh to pull latest version
       uses: fifsky/ssh-action@master
-      working-directory: node-js
       with:
+        working-directory: node-js
         command: |
           git pull origin master
           yarn install
@@ -69,8 +69,8 @@ jobs:
     steps:
     - name: ssh to restart python
       uses: fifsky/ssh-action@master
-      working-directory: python
       with:
+        working-directory: python
         command: |
           git pull origin master
           pip install -r requirements.txt
