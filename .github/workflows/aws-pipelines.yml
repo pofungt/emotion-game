@@ -39,7 +39,7 @@ jobs:
       uses: fifsky/ssh-action@master
       with:
         command: |
-          cd node-js
+          cd emotion-game/node-js
           git pull origin master
           yarn install
           yarn knex migrate:latest --env production
@@ -71,7 +71,7 @@ jobs:
       uses: fifsky/ssh-action@master
       with:
         command: |
-          cd python
+          cd emotion-game/python
           git pull origin master
           pip install -r requirements.txt
           forever restart -c 'python app.py' .
