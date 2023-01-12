@@ -38,8 +38,8 @@ jobs:
     - name: ssh to pull latest version
       uses: fifsky/ssh-action@master
       with:
-        working-directory: node-js
         command: |
+          cd node-js
           git pull origin master
           yarn install
           yarn knex migrate:latest --env production
@@ -70,8 +70,8 @@ jobs:
     - name: ssh to restart python
       uses: fifsky/ssh-action@master
       with:
-        working-directory: python
         command: |
+          cd python
           git pull origin master
           pip install -r requirements.txt
           forever restart -c 'python app.py' .
