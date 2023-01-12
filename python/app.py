@@ -2,8 +2,6 @@ from sanic import Sanic
 from sanic_ext import Extend
 from controllers.controller import stream
 
-IMG_SIZE = 48
-
 app = Sanic("Emotion_Detection")
 app.config.CORS_ORIGINS = "http://localhost:8080,http://localhost:8000,https://emogame.duncantang.dev"
 Extend(app)
